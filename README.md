@@ -1,5 +1,2 @@
 # speakGather
-Application that helps with organizing lecture events.
-When creating a profile you can choose what role you want to have in application (lecturer, attendee or both).
-Users can add each other in friends, attend or create lecutures, grade and comment them, set schedule of lecture, etc.
-When lecture is active, user can enter it, share screen, turn on camera, ask question, like questions, lecturer can answer questions, etc.  
+Application that helps with organizing lecture events. When creating a profile you can choose what role you want to have in the application (lecturer, attendee or both). Users can add each other as friends, attend or create lectures, grade and comment on them, set a schedule of lectures, etc. When the lecture is active, the user can enter it, share the screen, turn on the camera, ask and like questions, the lecturer can answer questions, etc.
