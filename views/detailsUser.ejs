@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/stylesheets/detailsUser.css">
+<script>const userId = "<%=user.id%>"</script>
+</head>
+<body>
+<%- include('./components/navbar') %>
+<%- include('./components/modals')%>
+<div class="col-md-7 mx-auto">
+    <div class="left-div">
+        <div id ="aboutUser" style = "padding-top:20px; color:#660033">
+            <h3 id="header-user-details">Details about selected user:</h3>
+            <hr style="border:1px solid #660033;">
+            <div class = "row" style="margin-left: 15px;">
+                <%if(user.profile_picture !== null){
+                    let src1 = "data:image/png;base64," + user.profile_picture.toString('base64').slice(0, -3);%>
+                <div id = "imageDiv" class="image-div col-md-3"><img class="img-user" id="user-image" src=<%=src1%>/></div>
+                <%}
+                else{%>
+                    <div id = "imageDiv" class="image-div col-md-3"><img class="img-user" id="user-image" src='/images/logo.png'/></div>
+                <%}%>
+                <div class="col-md-5 row">
+                    <table style="width:100%; margin-left: 10px">
+                        <tr>
+                            <th class="detail-header">Username:</th>
+                            <td class="detail-instance" id="name-user-details"><%=user.username%></td>
+                        </tr>
+                        <tr>
+                            <th class="detail-header">Here since:</th>
+                            <%const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                            const dateStartUnf = new Date(user.date_of_signup);
+                            const dateSignup = dateStartUnf.toLocaleDateString('en-US', options);%>
+                            <td class="detail-instance" id="date-user-details"><%=dateSignup%></td>
+                        </tr>
+                        <tr>
+                            <th class="detail-header">Lecturer:</th>
+                            <td class="detail-instance" id="lecturer-user-details"><%=user.lecturer%></td>
+                        </tr>
+                        <tr>
+                            <th class="detail-header">Attendee:</th>
+                            <td class="detail-instance" id="attendee-user-details"><%=user.attendee%></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-4" id="buttons">
+                    <%if(myUsername !== user.username){
+                    if(friendship === undefined || friendship.name === 'Denied'){%>
+                        <button class ='button' id = 'addFriend'>Add as friend</button>
+                    <%}
+                    else if (friendship.name === 'Pending'){%>
+                    <%if(myId === friendship.sender_of_request){%>
+                        <button class ='button' id = 'removeRequest'>Remove request</button>
+                    <%}
+                    else{%>
+                        <button class ='button' id = 'acceptRequest'>Accept request</button>
+                        <button class ='button' id = 'declineRequest'>Decline request</button>
+                    <%}%>
+                    <%}
+                    else if (friendship.name === 'Accepted'){%>
+                        <button class ='button' id = 'unfriend'>Unfriend</button>
+                        <button class ='button' id = 'chatUser'>Chat with this user</button>
+                    <%}
+                    if(myAdmin && myUsername != user.username){%>
+                        <button class ='button' id = 'block30'>30 days block</button>
+                    <%}%>
+                </div>
+                <%}
+                else{%>
+                <form id = "pictureForm" enctype =  "multipart/form-data">
+                    <input type="file" name="picture" id="pictureInput" style="display: none;">
+                    <button class ='button' id = 'changePicture'>Change picture</button>
+                </form>
+                    <button class ='button' id = 'deleteProfile'>Delete profile</button>
+                <%}%>
+            </div>
+            <hr style="border:1px dotted #660033;">
+            <div class = "row" style = "margin-left:-5px !important; margin-top:15px !important;">
+                <div class="col-md-6" style="margin-left: 0 !important; max-height: 300px; overflow: auto">
+                    <%if(user.lecturer){%>
+                    <h4>Lectures user organizes:</h4>
+                    <table id = "lecture-organized-details">
+                        <%if(lecturerLectures.length === 0){%>
+                            <div class = "toggle-div1">No lectures</div>
+                        <%}
+                        for(let i = 0; i < lecturerLectures.length; i++){
+                            var mytext1 = 'Name: '+ lecturerLectures[i].name + ' Category: ' + lecturerLectures[i].category_name;%>
+                        <div class = "toggle-div1" id=<%=lecturerLectures[i].id%>><%=mytext1%></div>
+                        <%}%>
+                    </table>
+                    <%}%>
+                </div>
+                <div class="col-md-6" style="max-height: 300px; overflow: auto">
+                    <%if(user.attendee){%>
+                    <h4>Lectures user attends:</h4>
+                    <table id = "lecture-attends-details">
+                        <%if(attendeeLectures.length === 0){%>
+                            <div class = "toggle-div1">No lectures</div>
+                        <%}
+                        for(let i = 0; i < attendeeLectures.length; i++){
+                            var mytext1 = 'Name: '+ attendeeLectures[i].name + ' Category: ' + attendeeLectures[i].category_name;%>
+                        <div class = "toggle-div1" id=<%=attendeeLectures[i].id%>><%=mytext1%></div>
+                        <%}%>
+                    </table>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/javascripts/userDetails.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeakGather</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/stylesheets/landingPage.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+</head>
+<body>
+<%- include('./components/navbarNotLogged') %>
+<div class="container-fluid landing-container">
+    <div class="row">
+        <div class="col-md-6 left-div" style="top:55px; text-align:center">
+            <h1>Get started with SpeakGather today</h1>
+            <button type="button" class="btn btn-primary" style="margin-top: 30px; padding:10px; background-color:#C0603A; border-color:#C0603A;" onclick="signup()">Sign up for free</button>
+        </div>
+        <div class="col-md-6 right-div" style="text-align:center; z-index: -1">
+            <h2>You can use SpeakGather for:</h2>
+            <ul style="list-style-type: none; padding-left:0">
+                <li><h3>Lectures</h3></li>
+                <li><h3>Conferences</h3></li>
+                <li><h3>Oral exams</h3></li>
+                <li><h3>Sharing experiences</h3></li>
+            </ul>
+            <!-- Content for the right div goes here -->
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>function signup(){window.location.href = 'http://localhost:3000/signup'}</script>
+</body>
+</html>

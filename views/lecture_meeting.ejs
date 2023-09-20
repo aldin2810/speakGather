@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecture meeting</title>
+    <link rel="stylesheet" href="/stylesheets/lecture_meeting.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script>
+        const ROOM_ID = "<%= roomId %>";
+    </script>
+</head>
+<body style = "background-image:url('/images/image_edited.jpg');">
+<div style = "display:none" id ="lecturer" userIsLecturer = <%=userIsLecturer%>></div>
+<div style = "display:none" id ="attendee" userIsAttendee = <%=userIsAttendee%>></div>
+<div class="container-fluid landing-container div-container" style=" height: 100vh">
+    <div class="row" style="color: #660033; text-align: center">
+        <div class = "header">
+            <h3 style="margin-top:10px;background: #5C002E; color: white; padding:10px; border: 2px solid white;
+            border-radius: 5px">Lecture meeting</h3>
+        </div>
+    </div>
+    <div class = 'row' style="margin:0; border: 1px solid; border-radius: 5px; height:90% !important;">
+        <div class = 'col-md-9' style="padding: 0;">
+            <div class="main__left" style="height: 100%;">
+                <div class="videos__group">
+                    <div id="video-grid" style="max-height:100%; overflow: auto;">
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="options__left">
+                        <div id="myvideo" class="options__button" state="off">
+                            <i class="fa-solid fa-video-slash"></i>
+                        </div>
+                        <div id="muteButton" class="options__button" state="off">
+                            <i class="fa-solid fa-microphone-slash"></i>
+                        </div>
+                        <div id = "shareScreen" class = "options__button" state="off">
+                            <i class="fa-solid fa-display"></i>
+                        </div>
+                    </div>
+                    <div class="options__right">
+                        <div id="hangUp" class = "options__button">
+                            <i class="fa-solid fa-phone-slash"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = 'col-md-3' style="padding:0">
+            <div class="main__right" style="height: 100%">
+                <div class="main__chat_window">
+                    <div class="messages" id = "messages">
+                        <%for(let i = 0; i < messages.length; i++){%>
+                            <div class = 'message '>
+                                <div style = "display: flex; flex-direction: row">
+                                    <%if(messages[i].proposal){%>
+                                    <div style="font-weight:bold">Maybe you want to hide this question:</div>
+                                    <%} else{%>
+                                    <div style="font-weight:bold">Question:</div>
+                                        <%}%>
+                                    <%if(userIsLecturer){%>
+                                        <button style="margin-right: 0; margin-left: auto; background: #660033; color:
+                                        white; padding:2px" class="Hide" type = <%=messages[i].id%>>Hide</button>
+                                    <%}%>
+                                    <%if(userIsAttendee){
+                                    if(messages[i].user_has_liked){%>
+                                    <button style="margin-right: 0; margin-left: auto; background: #660033; color:
+                                        white; padding:2px" class="Dislike" dislike = <%=messages[i].id%>>Dislike</button>
+                                    <%}
+                                    else{%>
+                                        <button style="margin-right: 0; margin-left: auto; background: #660033; color:
+                                        white; padding:2px" class="Like" like = <%=messages[i].id%>>Like</button>
+                                    <%}}%>
+                                </div>
+                                <div><%=messages[i].content%></div>
+                                <div style = "font-weight: bold">Answer:</div>
+                                <%if(messages[i].answer === null){%>
+                                    <div class = <%=messages[i].id%>>Not answered yet</div>
+                                <%}else{%>
+                                    <div class = <%=messages[i].id%>><%=messages[i].answer%></div>
+                                <%}%>
+                                <div style = "display:flex; flex-direction:row">
+                                    <div>By: <%=messages[i].username%></div>
+                                    <div style ="margin-left: 5px">Likes: <%=messages[i].likes_count%></div>
+                                    <%var arrayTime = messages[i].time.split(':');%>
+                                    <div style="margin-right: 0; margin-left: auto"><%=arrayTime[0]%>:<%=arrayTime[1]%></div>
+                                </div>
+                                <%if(userIsLecturer){%>
+                                <div style = "display: flex; flex-direction: row;">
+                                    <%if(messages[i].answer === null){%>
+                                        <textarea type="text" autocomplete="off" style="width:90%; height: 30px;"
+                                                  placeholder="Answer question..." sm =<%=messages[i].id%>></textarea>
+                                    <%}
+                                    else{%>
+                                        <textarea type="text" autocomplete="off" style="width:90%; height: 30px;"
+                                                  placeholder="Change your answer..." sm =<%=messages[i].id%>></textarea>
+                                    <%}%>
+                                    <div class="my-options__button Answer" id = <%=messages[i].id%>>
+                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <%}%>
+                            </div>
+                    <%}%>
+                    </div>
+                </div>
+                <div class="main__message_container">
+                    <%if (userIsAttendee){%>
+                        <input id="chat_message" type="text" autocomplete="off" placeholder="Ask question...">
+                        <div id="send" class="options__button">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+                    <%}
+                    else if (userIsLecturer){%>
+                        <input id="lecturer_message" type="text" autocomplete="off" placeholder="Type a message...">
+                        <div id="sendLecturer" class="options__button">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/javascripts/lecture_meeting.js"></script>
+</html>

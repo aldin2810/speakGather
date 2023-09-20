@@ -1,0 +1,17 @@
+
+.landing-container {
+  margin: 0;
+  position: absolute;
+  top: 55%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background-color:#D69278 ;
+}
+
+.left-div, .right-div {
+  height: 100%;
+  padding: 30px;
+  padding-top:70px;
+}
+
+

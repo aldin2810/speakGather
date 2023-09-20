@@ -1,0 +1,122 @@
+* {
+        margin: 0; !important;	
+        padding: 0; !important;
+        border: 0; !important;
+        outline: 0; !important;
+        font-size: 100%; !important;
+        vertical-align: baseline; !important;
+    }
+#mysearch{
+        border-color:#C0603A; 
+        color:#C0603A;
+}
+#mysearch:hover{
+        background-color:#C0603A; 
+        color:black;
+}
+
+
+#searchResults {
+        display: none;
+        position: absolute;
+        top: 90%;
+        width: 400px;
+        background-color: #D69278;
+        border: 1px solid #660033;
+        border-radius: 5px;
+}
+
+#searchResults.show {
+        display: block;
+}
+
+.searchResult{
+        padding: 10px;
+        border:1px solid;
+        border-color: #660033 !important;
+        border-radius: 10px;
+        margin: 5px;
+        cursor: pointer;
+}
+
+.searchResult:hover{
+        background-color:#C0603A;
+        color:white;
+}
+
+#myUsersSearch{
+        border-color:#C0603A;
+        color:#C0603A;
+}
+#myUsersSearch:hover{
+        background-color:#C0603A;
+        color:black;
+}
+
+#codeLecture{
+        border-color:#C0603A;
+        color:#C0603A;
+}
+#codeLecture:hover{
+        background-color:#C0603A;
+        color:black;
+}
+
+
+#searchUserResults {
+        display: none;
+        position: absolute;
+        top: 90%;
+        width: 400px;
+        background-color: #D69278;
+        border: 1px solid #660033;
+        border-radius: 5px;
+}
+
+#searchUserResults.show {
+        display: block;
+}
+
+.searchUserResult{
+        padding: 10px;
+        border:1px solid;
+        border-color: #660033 !important;
+        border-radius: 10px;
+        margin: 5px;
+        cursor: pointer;
+}
+
+.notificationsResult:hover{
+        background-color:#C0603A;
+        color:white;
+}
+
+#notificationsResults {
+        display: none;
+        position: absolute;
+        top: 90%;
+        width: 400px;
+        background-color: #D69278;
+        border: 1px solid #660033;
+        border-radius: 5px;
+        max-height: 200px;
+        overflow: auto;
+}
+
+#notificationsResults.show {
+        display: block;
+}
+
+.notificationsResult{
+        padding: 10px;
+        border:1px solid;
+        border-color: #660033 !important;
+        border-radius: 10px;
+        margin: 5px;
+        cursor: pointer;
+}
+
+.notificationsResult:hover{
+        background-color:#C0603A;
+        color:white;
+}

@@ -1,0 +1,55 @@
+.modalQ {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999999;
+}
+
+.centerQ {
+    margin: 0;
+    position: absolute;
+    top:50px;
+    left:50%;
+    transform: translate(-50%, 0);
+}
+
+.xButtonQ{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+    background: transparent;
+    padding: 3px;
+    color: #660033;
+}
+
+.toggle-div1Q {
+    padding: 10px;
+    border:1px solid;
+    border-color: #660033 !important;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+#realQuestions{
+    max-height: 70vh;
+    overflow: auto;
+}
+
+.attendee {
+    padding: 10px;
+    border:1px solid;
+    border-color: #660033 !important;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.attendee:hover{
+    background-color:#C0603A;
+    color:white;
+}

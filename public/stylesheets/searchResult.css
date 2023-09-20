@@ -1,0 +1,63 @@
+.div-container{
+    padding: 20px;
+    position: relative;
+    background-color:#D69278DF;
+    top:75px;
+    border-radius:15px;
+    align-content: center;
+    margin-bottom: 10px;
+    border:3px solid #660033;
+    max-height: 90vh;
+    overflow: auto;
+}
+
+.cards{
+    background-color: transparent !important;
+    border-color: #660033 !important;
+}
+
+.button{
+    border: 3px solid; !important;
+    background-color:transparent !important;
+    border-color: #660033 !important;
+    color: #660033 !important;
+    font-size: large;
+    font-weight: bold !important;
+}
+
+.button:hover:hover{
+    background-color: #660033 !important;
+    color:white !important;
+}
+
+.image-div{
+    border: 1px solid;
+    border-radius: 3px;
+    width:250px !important;
+    aspect-ratio : 1 / 1;
+    padding:0;
+    align-self: center;
+    margin-top:15px;
+}
+
+.my-active{
+    color: white !important;
+    background-color: #660033 !important;
+}
+
+.pagination{
+    border-color: #660033 !important;
+    margin:7px !important;
+    flex-wrap: wrap;
+}
+
+.page-link{
+    border-color: #660033 !important;
+    background-color: transparent !important;
+    color: #660033 !important;
+}
+
+.page-link:hover{
+    background-color: #660033 !important;
+    color: white !important;
+}

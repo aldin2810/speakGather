@@ -1,0 +1,104 @@
+<link rel="stylesheet" href="/stylesheets/rightCards.css">
+
+<div class="col-md-4">
+    <%if(result.lecturer) { %>
+        <div class="right-div" style="color:#660033; width:100%;">
+            <button class="toggle-button1">Lectures I am organizing
+                <a id="organizingLink"><i class="fas fa-arrow-right"></i></a></button>
+            <div class="content1" id="organizingLectures">
+                <%if(result.organizingLectures.length !== 0) {
+                    for(let i = 0; i < result.organizingLectures.length; i++){%>
+                        <div class="toggle-div1" id=<%=result.organizingLectures[i].id%>>
+                            Name: <%=result.organizingLectures[i].name%>
+                            Category: <%=result.organizingLectures[i].category_name.replace('_', ' ')%>
+                        </div>
+                <%}
+                }
+                else{%>
+                    <div class="toggle-div1">No lectures</div>
+                <%}%>
+            </div>
+            <button class = "toggle-button1">Lectures I will organize
+                <a id="organizeFutureLink"><i class="fas fa-arrow-right"></i></a></button>
+            <div class="content1" id="organizeFutureLectures">
+                <%if(result.organizeFutureLectures.length !== 0) {
+                for(let i = 0; i < result.organizeFutureLectures.length; i++){%>
+                    <div class="toggle-div1" id=<%=result.organizeFutureLectures[i].id%>>
+                        Name: <%=result.organizeFutureLectures[i].name%>
+                        Category: <%=result.organizeFutureLectures[i].category_name.replace('_', ' ')%>
+                    </div>
+                <%}
+                }
+                else{%>
+                    <div class="toggle-div1">No lectures</div>
+                <%}%>
+            </div>
+            <button class = "toggle-button1">Lectures I have organized
+                <a id="organizedLink"><i class="fas fa-arrow-right"></i></a></button>
+            <div class="content1" id="organizedLectures">
+                <%if(result.organizedLectures.length !== 0) {
+                for(let i = 0; i < result.organizedLectures.length; i++){%>
+                    <div class="toggle-div1" id=<%=result.organizedLectures[i].id%>>
+                        Name: <%=result.organizedLectures[i].name%>
+                        Category: <%=result.organizedLectures[i].category_name%>
+                    </div>
+                    <%}
+                    }
+                    else{%>
+                        <div class="toggle-div1">No lectures</div>
+                    <%}%>
+                </div>
+            </div>
+    <%}%>
+    <%if(result.attendee){%>
+        <div class="right-div" style="color:#660033; width:100%;">
+            <button class="toggle-button1">Lectures I attend
+                <a id="attendingLink"><i class="fas fa-arrow-right"></i></a></button>
+            <div class="content1" id="attendingLectures">
+                <%if(result.attendingLectures.length !== 0) {
+                for(let i = 0; i < result.attendingLectures.length; i++){%>
+                    <div class="toggle-div1" id=<%=result.attendingLectures[i].id%>>
+                        Name: <%=result.attendingLectures[i].name%>
+                        Category: <%=result.attendingLectures[i].category_name%>
+                    </div>
+                <%}
+                }
+                else{%>
+                    <div class="toggle-div1">No lectures</div>
+                <%}%>
+            </div>
+            <button class = "toggle-button1">Lectures I will attend
+                <a id="attendFutureLink"><i class="fas fa-arrow-right"></i></a></button>
+            <div class="content1" id="attendFutureLectures">
+                <%if(result.attendFutureLectures.length !== 0) {
+                for(let i = 0; i < result.attendFutureLectures.length; i++){%>
+                    <div class="toggle-div1" id=<%=result.attendFutureLectures[i].id%>>
+                        Name: <%=result.attendFutureLectures[i].name%>
+                        Category: <%=result.attendFutureLectures[i].category_name%>
+                    </div>
+                <%}
+                }
+                else{%>
+                    <div class="toggle-div1">No lectures</div>
+                <%}%>
+            </div>
+            <button class = "toggle-button1">Lectures I have completed
+                <a id="attendedLink"><i class="fas fa-arrow-right"></i></a></button>
+            <div class="content1" id="attendedLectures">
+                <%if(result.attendedLectures.length !== 0) {
+                for(let i = 0; i < result.attendedLectures.length; i++){%>
+                    <div class="toggle-div1" id=<%=result.attendedLectures[i].id%>>
+                        Name: <%=result.attendedLectures[i].name%>
+                        Category: <%=result.attendedLectures[i].category_name%>
+                    </div>
+                <%}
+                }
+                else{%>
+                    <div class="toggle-div1">No lectures</div>
+                <%}%>
+            </div>
+        </div>
+    <%}%>
+</div>
+
+<script src="/javascripts/rightCards.js"></script>

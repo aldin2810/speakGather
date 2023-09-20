@@ -1,0 +1,166 @@
+.left-div{
+    padding: 20px;
+    position: relative;
+    background-color:#D69278DF;
+    top:75px;
+    border-radius:15px;
+    align-content: center;
+    margin-bottom: 10px;
+    border:3px solid #660033;
+    max-height: 90vh;
+    overflow: auto;
+}
+
+.button{
+    margin-top:5px !important;
+    padding:7px !important;
+    border: 3px solid; !important;
+    background-color:transparent !important;
+    border-color: #660033 !important;
+    color: #660033;
+    font-size: large;
+    font-weight: bold !important;
+}
+
+.div-file:hover, .add-file-button:hover, .button:hover:hover{
+    background-color: #660033 !important;
+    color:white !important;
+}
+
+.image-div{
+    margin-top: 5px;
+    margin-left: 0px;
+    border: 1px solid;
+    border-radius: 3px;
+    width: 100%;
+    max-width: 250px;
+    aspect-ratio : 1 / 1;
+    padding:0;
+}
+
+.detail-div{
+    margin-top:5px;
+    margin-left: 10px;
+}
+
+.detail-header{
+    font-size: large;
+    font-weight: bold;
+    padding: 7px;
+}
+
+.detail-instance{
+    padding-top:7px;
+    padding-bottom: 7px;
+    font-size: larger;
+}
+
+.day{
+    padding:4px;
+    font-size: medium;
+}
+
+.time{
+    padding:4px;
+    font-size: large;
+}
+
+.img-lecture {
+    width:100%;
+    height:100%;
+}
+
+.add-file-button{
+    margin:5px !important;
+    padding:5px !important;
+    border: 1px solid; !important;
+    background-color:transparent !important;
+    border-color: #660033 !important;
+    color: #660033;
+    font-size: medium;
+    font-weight: bold !important;
+    cursor: pointer;
+}
+
+.div-file{
+    margin:3px !important;
+    padding:5px !important;
+    border: 1px solid; !important;
+    background-color:transparent !important;
+    border-color: #660033 !important;
+    color: #660033;
+    font-size: medium;
+    font-weight: bold !important;
+    cursor: pointer;
+    width:215px;
+}
+.text-container {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hidden {
+    display: none;
+}
+
+#loadingAnimation {
+    text-align: center;
+    padding: 10px;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #660033;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.xButton-file{
+    position: relative;
+    cursor: pointer;
+    background: transparent;
+    padding: 3px;
+    color: #660033;
+}
+
+.div-file:hover .xButton-file{
+    color:#D69278;
+}
+
+.fas:hover{
+    color: #C0603A;
+}
+
+.div-file:hover .spinnerX{
+    border-left-color: #D69278;
+}
+#loadingAnimationX {
+    text-align: center;
+    padding: 3px;
+}
+
+.spinnerX {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #660033;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-top:7px;
+}
+
+.div-file:hover .text-container{
+    color:white !important;
+}

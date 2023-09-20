@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeakGather</title>
+    <link rel="shortcut icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/searchResult.css">
+</head>
+<body>
+<%- include('./components/navbar') %>
+<div class="container-fluid landing-container div-container">
+    <div class="col-md-12" style="color: #660033">
+        <h3 id="headerOfSearch">Searched lectures:</h3>
+        <div class="dropdown" style="margin-top: 5px; margin-bottom: 5px;">
+            <button type="button" class="btn btn-primary dropdown-toggle button" data-toggle="dropdown">
+                Sort by
+            </button>
+            <div class="dropdown-menu" style="background: #D69278;color:#660033">
+                <a class="dropdown-item my-active" id="sortStartDate" style="cursor:pointer">Start date</a>
+                <a class="dropdown-item" id = "sortNumberOfSessions" style="cursor:pointer">Session number</a>
+            </div>
+        </div>
+        <%for(let i = 0; i < lectures.length-1; i++){
+            var src1=null;
+            if(lectures[i].image) {
+                src1 = "data:image/png;base64," + lectures[i].image.toString('base64');
+            }
+            if(i%4===0){%>
+                <div class="row" style="color:#660033">
+            <%}%>
+            <div class="card cards col-md-3">
+                <img class="card-img-top image-div" src=<%=src1%> alt="Image">
+                <div class="card-body">
+                    <h5 class="card-title"><%=lectures[i].name%></h5>
+                    <h6 class="card-title">By <%=lectures[i].username%></h6>
+                    <p class="card-text" style="max-height: 75px; overflow: auto; height: 75px"><%=lectures[i].description%></p>
+                    <a class="btn btn-primary button go-to" id=<%=lectures[i].id%>>Go to lecture</a>
+                </div>
+            </div>
+            <%if(i%4===3){%>
+                </div>
+            <%}%>
+        <%}%>
+        <%if((lectures.length-1)%4 !== 0){%>
+            </div>
+        <%}%>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" id = "previous" href="#">Previous</a></li>
+                    <%for(let i = 1; i < Math.floor(lectures[lectures.length-1]/12) + 2; i++){%>
+                    <li class="page-item"><a class="page-link pagination1" id=<%=i-1%>><%=i%></a></li>
+                    <%}%>
+                    <li class="page-item"><a class="page-link" id="next" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<script src="/javascripts/searchResult.js"></script>
+<script>function signup(){window.location.href = 'http://localhost:3000/signup'}</script>
+</body>
+</html>

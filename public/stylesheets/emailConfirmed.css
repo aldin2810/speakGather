@@ -1,0 +1,18 @@
+/* styles.css */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.landing-container {
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 55%;
+    padding:80px;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background-color:#D69278 ;
+}
+

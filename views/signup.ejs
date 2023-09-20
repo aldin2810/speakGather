@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/stylesheets/signup.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+</head>
+<body>
+<div class="has-bg-img">
+
+    <img class="bg-img" src="/images/image_edited.jpg" style="width:100%; height: 100vh;" alt="...">
+</div>
+<%- include('./components/navbarNotLogged') %>
+<div style="display:flex; justify-content: center;" class="center">
+    <div class="card" style="width:400px; top:30px; background-color:#D69278BA; color: #660033">
+        <div class="align-items-center">
+            <form class="px-4 py-3" action="/submit/signup" method="POST" id="signupForm">
+                <div class="form-group">
+                    <label for="firstName">First name:</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Donald">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last name:</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Duck">
+                </div>
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="DuckDon">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="passwordConfirmation">Confirm password:</label>
+                    <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation"
+                           placeholder="Confirm password">
+                </div>
+                <div class="form-check" style="bottom:5px">
+                    <input type="checkbox" class="form-check-input" id="attendee" name="attendee">
+                    <label class="form-check-label" for="attendee">
+                        I want to be attendee of events and lectures
+                    </label>
+                </div>
+                <div class="form-check" style="bottom:5px; padding-bottom:10px">
+                    <input type="checkbox" class="form-check-input" id="lecturer" name="lecturer">
+                    <label class="form-check-label" for="lecturer">
+                        I want to be organizer of events and lectures
+                    </label>
+                </div>
+                <div id="error" style="color: red;"></div>
+                <button type="submit" class="btn btn-primary" style="background-color:#C0603A; border-color:#C0603A;top:100px">Sign up</button>
+            </form>
+        </div>
+    </div>
+</div>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/javascripts/signup.js"></script>
+</body>
+</html>

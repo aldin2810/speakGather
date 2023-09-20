@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeakGather</title>
+    <link rel="shortcut icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/usersGrid.css">
+</head>
+<body>
+<%- include('./components/navbar') %>
+<div class="container-fluid landing-container div-container">
+    <div class="col-md-12" style="color: #660033">
+        <h3 id="headerOfSearch">Searched users:</h3>
+        <%for(let i = 0; i < users.length; i++){
+            var src1='/images/logo.png';
+            if(users[i].profile_picture) {
+                src1 = "data:image/png;base64," + users[i].profile_picture.toString('base64');
+            }
+        if(i%4===0){%>
+        <div class="row" style="color:#660033">
+            <%}%>
+            <div class="card cards col-md-3">
+                <img class="card-img-top image-div" src=<%=src1%> alt="Image">
+                <div class="card-body">
+                    <h5 class="card-title"><%=users[i].username%></h5>
+                    <h6 class="card-title">Lecturer: <%=users[i].lecturer%></h6>
+                    <h6 class="card-title">Attendee: <%=users[i].attendee%></h6>
+                    <a class="btn btn-primary button go-to" id=<%=users[i].id%>>Go to user</a>
+                </div>
+            </div>
+            <%if(i%4===3){%>
+        </div>
+        <%}%>
+        <%}%>
+        <%if((users.length)%4 !== 0){%>
+    </div>
+    <%}%>
+</div>
+<script src="/javascripts/usersGrid.js"></script>
+<script>function signup(){window.location.href = 'http://localhost:3000/signup'}</script>
+</body>
+</html>

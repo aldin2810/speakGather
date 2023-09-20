@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeakGather</title>
+    <link rel="stylesheet" href="/stylesheets/homepage.css">
+    <link rel="shortcut icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+</head>
+<body>
+<%let result1 = ''; if(!!result.lecture_id){result1 = result.lecture_id}%>
+<div id="lecture_id" lectureProvided= <%= result1 %>></div>
+<%- include('./components/navbar') %>
+<div class="container-fluid landing-container">
+    <div class="row">
+        <%- include('./components/detailsLecture') %>
+        <%- include('./components/rightCards')%>
+    </div>
+</div>
+<%- include('./components/lectureForm')%>
+<%- include('./components/modals')%>
+<script>function signup(){window.location.href = 'http://localhost:3000/signup'}</script>
+</body>
+</html>

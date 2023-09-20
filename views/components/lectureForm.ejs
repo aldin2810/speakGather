@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<link rel="stylesheet" href="/stylesheets/lectureForm.css" />
+
+<div class="modal" id="myModal">
+    <div style="display:flex; justify-content: center;" class="center">
+        <div class="card" style="width:400px; top:30px; background-color:#D69278; color: #660033">
+            <div class="align-items-center">
+                <form class="px-4 py-3" method="POST" id="lectureForm" autocomplete="off" enctype="multipart/form-data">
+                    <button type="button" id="closeModalButton" class="xButton">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="form-group">
+                        <label for="name">Name of lecture:</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Calculus I">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category:</label>
+                        <select id="category" name ="category" class="form-control">
+                            <%for(let i = 0; i < result.categories.length; i++){
+                                const nicely = result.categories[i].replace('_', ' ');
+                            %>
+                            <option value=<%=result.categories[i]%>><%=nicely%></option>
+                            <%}%>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea type="text" class="form-control" id="description" name="description"
+                                  placeholder="Some description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group" style="display: flex; flex-direction: column">
+                        <label for="dateStart">Select a date of start:</label>
+                        <input type="text" id="dateStart" name="dateStart" style="width: 30%; text-align: center;border-radius: 3px;">
+                    </div>
+                    <div class="form-group" style="display: flex; flex-direction: column">
+                        <label for="dateEnd">Select a date of end:</label>
+                        <input type="text" id="dateEnd" name="dateEnd" style="width: 30%; text-align: center;border-radius: 3px;">
+                    </div>
+                    <div class="form-group">
+                        <label for="days">Days:</label>
+                        <select id="days" name ="days" class="form-control selectpicker" multiple>
+                            <%for(let i = 0; i < result.days.length; i++){%>
+                            <option value=<%=result.days[i]%>><%=result.days[i]%></option>
+                            <%}%>
+                        </select>
+                    </div>
+                    <div class="form-group" style="display: flex; flex-direction: column">
+                        <label for="time">Select a time for selected days:</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Upload an image:</label>
+                        <input type="file" id="image" class="form-control-file" name="image">
+                    </div>
+                    <div class="form-group">
+                        <label for="privacy">Privacy:</label>
+                        <select id="privacy" name ="privacy" class="form-control">
+                            <%for(let i = 0; i < result.privacies.length; i++){%>
+                            <option value=<%=result.privacies[i]%>><%=result.privacies[i]%></option>
+                            <%}%>
+                        </select>
+                    </div>
+                    <div id="error" style="color: red;"></div>
+                    <button type="submit" class="btn btn-primary" style="background-color:#C0603A; border-color:#C0603A;top:100px">Create lecture</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script src="/javascripts/lectureForm.js"></script>
+<script>
+    const url = `/submit/new-lecture?token=`+token;
+    $('#lectureForm').attr('action', url);
+</script>

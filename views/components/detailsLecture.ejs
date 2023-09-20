@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="/stylesheets/detailsLecture.css">
+<div class="col-md-8">
+    <div class="left-div">
+        <div id="everything">
+            <%if(result.lecturer){%>
+                <button type="button" class="btn btn-primary button" id="openModalButton">Organize new lecture</button>
+                <%}
+                if(result.userIsLecturer){%>
+                <button type="button" class="btn btn-primary button" id = "seeAttendees">See attendees</button>
+                <button type="button" class="btn btn-primary button" id = "code">Code of lecture</button>
+            <%}%>
+        </div>
+        <div id ="aboutLecture" style = "padding-top:20px; color:#660033">
+            <h3 id="header-details">Details about some of yours lecture:</h3>
+            <hr style="border:1px solid #660033;">
+            <div class = "row" style="margin-left: 15px">
+                <div id = "imageDiv" class="image-div col-md-3"><img class="img-lecture" id="lecture-image" src=""/></div>
+                <div class="col-md-5 row">
+                    <table style="width:100%; margin-left: 10px">
+                        <tr>
+                            <th class="detail-header">Name:</th>
+                            <td class="detail-instance" id="name-details"></td>
+                        </tr>
+                        <tr>
+                            <th class="detail-header">Category:</th>
+                            <td class="detail-instance" id="category-details"></td>
+                        </tr>
+                        <tr>
+                            <th class="detail-header">Lecturer:</th>
+                            <td class="detail-instance" id="lecturer-details"></td>
+                        </tr>
+                        <tr>
+                            <th class="detail-header">Start date:</th>
+                            <td class="detail-instance" id="start-date-details"></td>
+                        </tr>
+                        <tr>
+                            <th class="detail-header">End date:</th>
+                            <td class="detail-instance" id="end-date-details"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-4" id="buttons">
+                </div>
+            </div>
+            <hr style="border:1px dotted #660033;">
+            <div class = "row" style = "margin-left:10px">
+                <div style="display: flex; flex-direction: column">
+                    <h4>Description:</h4>
+                    <p style="font-size: large" id="description-details"></p>
+                </div>
+            </div>
+            <hr style="border:1px dotted #660033;">
+            <div class = "row" style = "margin-left:-5px !important;">
+                <div class="col-md-4" style="margin-left: 0 !important;">
+                    <h4>Schedule:</h4>
+                    <table id = "schedule-details">
+
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <h4>Commentars:</h4>
+                    <div id="commentars-details" style="max-height:28vh;overflow: auto;">
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h4>Grades:</h4>
+                    <div id="grades-details" style="max-height:28vh;overflow: auto;">
+
+                    </div>
+                </div>
+            </div>
+            <hr style="border:1px dotted #660033;">
+            <%if(result.userIsAttendee || result.userIsLecturer){%>
+                <div class = "row" style = "margin-left:10px; width:95%;">
+                    <div style="display: flex; flex-direction: column">
+                        <h4>Files:</h4>
+                        <div class="row" style = "margin-left:10px" id="files-details">
+                        </div>
+                    </div>
+                </div>
+            <%}%>
+        </div>
+    </div>
+</div>
+
+<script src="/javascripts/lectureDetails.js"></script>
